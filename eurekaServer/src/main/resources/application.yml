@@ -1,0 +1,26 @@
+spring:
+  profiles: 
+    active: '@env@'
+  application:
+    name: eurekaServer
+  main:
+    show-banner: false
+  http:
+    multipart:
+      max-file-size: 2Mb
+      max-request-size: 2Mb
+server:
+  port: 8080
+  context-path: /
+  session-timeout: 30
+  tomcat:
+    uri-encoding: UTF-8
+eureka:
+  instance:
+    hostname: ${EUREKA_INSTANCE_HOSTNAME}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_DEFAULTZONE}
+      

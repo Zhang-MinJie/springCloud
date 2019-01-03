@@ -1,0 +1,68 @@
+version: '3.1'
+
+services:
+  eureka-server-1:
+    image: zhmj/java-app:latest
+    container_name: eureka-server-1
+    ports:
+      - 8101:8080
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: localhost
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8102/eureka/,http://172.24.0.1:8103/eureka/
+    volumes:
+      - ./eurekaServer/target/eurekaServer.jar:/var/www/app/server.jar
+  eureka-server-2:
+    image: zhmj/java-app:latest
+    container_name: eureka-server-2
+    ports:
+      - 8102:8080
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: localhost
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8103/eureka/
+    volumes:
+      - ./eurekaServer/target/eurekaServer.jar:/var/www/app/server.jar
+  eureka-server-3:
+    image: zhmj/java-app:latest
+    container_name: eureka-server-3
+    ports:
+      - 8103:8080
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: localhost
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8102/eureka/
+    volumes:
+      - ./eurekaServer/target/eurekaServer.jar:/var/www/app/server.jar
+  eureka-client-producer-1:
+    image: zhmj/java-app:latest
+    container_name: eureka-client-producer-1
+    ports:
+      - 8104:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8102/eureka/,http://172.24.0.1:8103/eureka/
+    volumes:
+      - ./eurekaClientProducer/target/eurekaClientProducer.jar:/var/www/app/server.jar
+  eureka-client-producer-2: 
+    image: zhmj/java-app:latest
+    container_name: eureka-client-producer-2
+    ports:
+      - 8105:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8102/eureka/,http://172.24.0.1:8103/eureka/
+    volumes:
+      - ./eurekaClientProducer/target/eurekaClientProducer.jar:/var/www/app/server.jar
+  eureka-client-producer-3: 
+    image: zhmj/java-app:latest
+    container_name: eureka-client-producer-3
+    ports:
+      - 8106:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8102/eureka/,http://172.24.0.1:8103/eureka/
+    volumes:
+      - ./eurekaClientProducer/target/eurekaClientProducer.jar:/var/www/app/server.jar
+      
+      
+      
+      
+      
+      
+      
+      

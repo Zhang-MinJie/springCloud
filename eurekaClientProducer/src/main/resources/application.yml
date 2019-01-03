@@ -1,0 +1,29 @@
+spring:
+  profiles: 
+    active: '@env@'
+  application:
+    name: eurekaClientProducer
+  main:
+    show-banner: false
+  http:
+    multipart:
+      max-file-size: 2Mb
+      max-request-size: 2Mb
+server:
+  port: 8080
+  context-path: /
+  session-timeout: 30
+  tomcat:
+    uri-encoding: UTF-8
+eureka:
+  instance:
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    # 表示是否注册自身到eureka服务器
+    register-with-eureka: true
+    # 是否从eureka上获取注册信息
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_DEFAULTZONE}
+      
