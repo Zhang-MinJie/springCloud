@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("eurekaClientProducer")
 public interface EurekaClientProducerApi {
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/hellow")
     public String hellow();
 }
