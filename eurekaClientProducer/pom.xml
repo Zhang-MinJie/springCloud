@@ -5,11 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>cn.zhmj.example</groupId>
+		<groupId>zhmj-example-spring-cloud</groupId>
 		<artifactId>springCloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cn.zhmj.example.sprinCloud.eurekaClient</groupId>
+	<groupId>zhmj-example-spring-cloud-eureka-client-producer</groupId>
 	<artifactId>eurekaClientProducer</artifactId>
 	<packaging>jar</packaging>
 	<name>eurekaClientProvider Maven Webapp</name>
