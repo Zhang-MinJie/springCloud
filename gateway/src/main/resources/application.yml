@@ -1,0 +1,39 @@
+server: 
+  port: 8080
+  context-path: /
+  session-timeout: 30
+  tomcat:
+    uri-encoding: UTF-8
+spring: 
+  profiles: 
+    active: '@env@'
+  application:
+    name: gateway
+  main:
+    show-banner: false
+  http:
+    multipart:
+      max-file-size: 2Mb
+      max-request-size: 2Mb
+  cloud:
+    gateway: 
+      discovery:
+        locator:
+          enabled: true
+#      routes:
+#      - id: host_route
+#        uri: http://localhost:8081
+#        predicates:
+#        - Path=/a/**
+#        filters:
+#        - StripPrefix=1
+#      - id: host_route
+#        uri: http://localhost:8082
+#        predicates:
+#        - Path=/b/**
+#        filters:
+#        - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/

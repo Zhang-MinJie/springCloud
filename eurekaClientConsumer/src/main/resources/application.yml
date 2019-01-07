@@ -1,4 +1,10 @@
-spring:
+server: 
+  port: 8081
+  context-path: /
+  session-timeout: 30
+  tomcat:
+    uri-encoding: UTF-8
+spring: 
   profiles: 
     active: '@env@'
   application:
@@ -9,12 +15,6 @@ spring:
     multipart:
       max-file-size: 2Mb
       max-request-size: 2Mb
-server:
-  port: 8080
-  context-path: /
-  session-timeout: 30
-  tomcat:
-    uri-encoding: UTF-8
 eureka:
   instance:
     appname: ${spring.application.name}
@@ -25,6 +25,6 @@ eureka:
     # 是否从eureka上获取注册信息
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://172.24.0.1:8101/eureka/,http://172.24.0.1:8102/eureka/,http://172.24.0.1:8103/eureka/
+      defaultZone: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
       
       
