@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 public class TestController {
 	
-	@RequestMapping(value = "/hellow", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	@ResponseBody
     public String home() {
         return "Hello world";

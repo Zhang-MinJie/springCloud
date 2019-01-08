@@ -58,6 +58,33 @@ services:
       EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
     volumes:
       - ./eurekaClientProducer/target/eurekaClientProducer.jar:/var/www/app/server.jar
+  eureka-client-consumer-1: 
+    image: zhmj/java-app:latest
+    container_name: eureka-client-consumer-1
+    ports:
+      - 8201:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
+    volumes:
+      - ./eurekaClientConsumer/target/eurekaClientConsumer.jar:/var/www/app/server.jar
+  eureka-client-consumer-2: 
+    image: zhmj/java-app:latest
+    container_name: eureka-client-consumer-2
+    ports:
+      - 8202:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
+    volumes:
+      - ./eurekaClientConsumer/target/eurekaClientConsumer.jar:/var/www/app/server.jar
+  eureka-client-consumer-3: 
+    image: zhmj/java-app:latest
+    container_name: eureka-client-consumer-3
+    ports:
+      - 8203:8080
+    environment:
+      EUREKA_CLIENT_DEFAULTZONE: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
+    volumes:
+      - ./eurekaClientConsumer/target/eurekaClientConsumer.jar:/var/www/app/server.jar
       
       
       

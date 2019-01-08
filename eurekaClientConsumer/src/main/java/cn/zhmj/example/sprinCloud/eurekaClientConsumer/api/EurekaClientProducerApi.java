@@ -4,9 +4,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("eurekaClientProducer")
+@FeignClient("eureka-client-producer")
 public interface EurekaClientProducerApi {
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/hellow")
-    public String hellow();
+	@RequestMapping(method = RequestMethod.GET, value = "/hello")
+    public String hello();
 }

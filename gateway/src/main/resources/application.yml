@@ -19,7 +19,8 @@ spring:
     gateway: 
       discovery:
         locator:
-          enabled: true
+          enabled: true # 开启eureka
+          lowerCaseServiceId: true #兼容小写appname
 #      routes:
 #      - id: host_route
 #        uri: http://localhost:8081

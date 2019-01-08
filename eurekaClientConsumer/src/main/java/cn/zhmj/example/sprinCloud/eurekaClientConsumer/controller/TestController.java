@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 import cn.zhmj.example.sprinCloud.eurekaClientConsumer.api.EurekaClientProducerApi;
 
@@ -15,14 +16,29 @@ public class TestController {
 	@Autowired
 	private EurekaClientProducerApi eurekaClientProducerApi;
 
-	@HystrixCommand(fallbackMethod = "buildFallback", threadPoolKey = "licenseByOrgThreadPool")
-	@RequestMapping(value = "/hellow", method = RequestMethod.GET)
+	@HystrixCommand(
+			fallbackMethod = "buildFallback",
+			threadPoolKey = "licenseByOrgThreadPool",
+			threadPoolProperties = {
+			        @HystrixProperty(name = "coreSize",value="30"),
+			        @HystrixProperty(name="maxQueueSize", value="10")
+			    },
+			    commandProperties = {
+			        @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "10"),
+			        @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value="75"),
+			        @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="7000"),
+			        @HystrixProperty(name="metrics.rollingStats.timeInMilliseconds",value="15000"),
+			        @HystrixProperty(name="metrics.rollingStats.numBuckets",value="5"),
+			        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000")
+			    }
+		)
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	@ResponseBody
 	public String home() {
-		return eurekaClientProducerApi.hellow();
+		return eurekaClientProducerApi.hello();
 	}
 	
 	public String buildFallback() {
-		return "Error";
+		return "Say hello word Error";
 	}
 }

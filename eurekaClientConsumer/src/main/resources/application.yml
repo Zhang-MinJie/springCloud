@@ -1,5 +1,5 @@
 server: 
-  port: 8081
+  port: 8080
   context-path: /
   session-timeout: 30
   tomcat:
@@ -8,7 +8,7 @@ spring:
   profiles: 
     active: '@env@'
   application:
-    name: eurekaClientConsumer
+    name: eureka-client-consumer
   main:
     show-banner: false
   http:
@@ -25,6 +25,7 @@ eureka:
     # 是否从eureka上获取注册信息
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
+      #defaultZone: http://172.24.0.1:8761/eureka/,http://172.24.0.1:8762/eureka/,http://172.24.0.1:8763/eureka/
+      defaultZone: ${EUREKA_CLIENT_DEFAULTZONE}                                                                                                                                                                                       
       
       

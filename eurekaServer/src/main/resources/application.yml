@@ -2,7 +2,7 @@ spring:
   profiles: 
     active: '@env@'
   application:
-    name: eurekaServer
+    name: eureka-server
   main:
     show-banner: false
   http:
